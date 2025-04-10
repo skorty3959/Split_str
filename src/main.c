@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../include/custom_str.h"
 
-
-char** split_str(char* input,char* marks,int* count)
+/*char** split_str(char* input,char* marks,int* count)
 	{
 	char* str=strdup(input);
 	if(str == NULL)
@@ -23,13 +23,16 @@ char** split_str(char* input,char* marks,int* count)
 		free(str);
 		return NULL;
 		}
-	}
+	}*/
 	
 
 
 int main()
 	{
-	int n;
+	size_t limit=1000;
+	char* str=read_string(limit);
+	printf("%s\n",str);
+	/*int n;
 	scanf("%d\n",&n);
 	char* input=(char*)calloc(n,sizeof(char));
 	char* marks=",";
@@ -44,6 +47,6 @@ int main()
 		printf("%s\n",substrings[i]);
 		free(substrings[i]);
 		}
-	free(substrings);
+	free(substrings);*/
 	}
 
