@@ -3,7 +3,7 @@
 #include <string.h>
 #include "../include/custom_str.h"
 
-char** split_str(char* input,char* marks,int* count)
+char** split_str(char* input,const char* marks,int* count)
 	{
 	char* str=strdup(input);
 	if(str == NULL)
@@ -30,10 +30,10 @@ char** split_str(char* input,char* marks,int* count)
 int main()
 	{
 	size_t limit=1000;
-	int count;
-	char* marks=",";
+	int count=0;
+	const char* marks=",";
 	char* input=read_string(limit);
-	char** substrings=split_str(input,marks,count);
+	char** substrings=split_str(input,marks,&count);
 	for(int i=0;i<count;i++)
 		{
 		printf("%s\n",substrings[i]);
