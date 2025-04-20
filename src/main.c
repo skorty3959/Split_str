@@ -10,18 +10,32 @@ char** split_str(char* input,const char* marks,int* count)
 		{
 		return NULL;
 		}
-	*count=0;
 	char* token=strtok(str,marks);
+	char** result=NULL;
 	while(token != NULL)
 		{
 		(*count)++;
+		if(*count == 1)
+			{
+			result=(char**)calloc(*count,sizeof(char*));
+			
+			}
+		else
+			{
+			char** test =(char**)realloc(result,(*count)*sizeof(char*));
+			if(test == NULL)
+				{
+				(*count)--;
+				for(int i=0;i<(*count);i++)
+					{
+					free(result[i]);
+					}
+				}	
+			}
+		result[*count-1]=(char*)calloc(strlen(token)+1,sizeof(char));
+		strcpy(result[*count-1],token);
+		result[*count-1][strlen(token)]='\0';
 		token=strtok(NULL,marks);
-		}
-	char** result=(char**)calloc(*count,sizeof(char*));
-	if(result == NULL)
-		{
-		free(str);
-		return NULL;
 		}
 	}
 	
