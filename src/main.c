@@ -37,6 +37,8 @@ char** split_str(char* input,const char* marks,int* count)
 		result[*count-1][strlen(token)]='\0';
 		token=strtok(NULL,marks);
 		}
+	free(str);
+	return(result);
 	}
 	
 
@@ -54,5 +56,6 @@ int main()
 		free(substrings[i]);
 		}
 	free(substrings);
+	return 0;
 	}
 
