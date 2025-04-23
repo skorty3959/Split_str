@@ -30,7 +30,12 @@ char** split_str(char* input,const char* marks,int* count)
 					{
 					free(result[i]);
 					}
-				}	
+				free(result);
+				}
+			else
+				{
+				result=test;
+				}
 			}
 		result[*count-1]=(char*)calloc(strlen(token)+1,sizeof(char));
 		strcpy(result[*count-1],token);
@@ -47,7 +52,7 @@ int main()
 	{
 	size_t limit=1000;
 	int count=0;
-	const char* marks=",";
+	const char* marks=", .";
 	char* input=read_string(limit);
 	char** substrings=split_str(input,marks,&count);
 	for(int i=0;i<count;i++)
@@ -56,6 +61,7 @@ int main()
 		free(substrings[i]);
 		}
 	free(substrings);
+	free(input);
 	return 0;
 	}
 
